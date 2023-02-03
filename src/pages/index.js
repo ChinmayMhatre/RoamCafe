@@ -10,6 +10,8 @@ import data from "./locs.json"
 
 import styles from "@styles/Home.module.scss";
 
+
+
 const DEFAULT_CENTER = [38.907132, -77.036546];
 
 // const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -32,11 +34,9 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Section>
         <Container>
           <h1 className={styles.title}>Next.js Leaflet Starter</h1>
-
           <Map
             className={styles.homeMap}
             width="800"
@@ -75,18 +75,9 @@ export default function Home() {
             )}
           </Map>
 
-          <p className={styles.description}>
-            <code className={styles.code}>
-              yarn create next-app -e
-              https://github.com/colbyfayock/next-leaflet-starter
-            </code>
-          </p>
 
-          <p className={styles.view}>
-            <Button href="https://github.com/colbyfayock/next-leaflet-starter">
-              Vew on GitHub
-            </Button>
-          </p>
+
+
         </Container>
       </Section>
     </Layout>
