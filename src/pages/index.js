@@ -24,7 +24,7 @@ import { auth, db } from "../utils/firebase";
 
 import styles from "@styles/Home.module.scss";
 import Forum from "@components/forum";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const DEFAULT_CENTER = [38.907132, -77.036546];
 
@@ -36,23 +36,25 @@ export default function Home() {
   const [currentCountry, setCurrentCountry] = useState("")
   const [currentCity, setCurrentCity] = useState("")
   const [cityData,setCityData] = useState({})
+  const [countryImages,setCountryImages] = useState({})
   const updateData = async (city,region)=>{
     setCurrentCity( city )
     setCurrentCountry( region )
-    await getCity()
+
+
   }
 
-  const getCity = async () => {
-    const collectionRef = collection(db, "city");
-    const q = query(collectionRef);
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const tempcities = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      const cities = tempcities.filter(el => el.country == currentCountry ) 
-      console.log(cities)
-      setCityData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    });
-    return unsubscribe;
-};
+  useEffect(() => {
+    citydatafetch(currentCity)
+  }, [currentCity])
+  
+
+  const citydatafetch = ()=>{
+    data?.destinations.map(({  city,...rest })=>{
+      if(city === currentCity){
+        setCityData(rest)
+    }})
+  }
 
   return (
     <Layout>
@@ -119,7 +121,7 @@ export default function Home() {
         <Container>
           <div className={` ${currentCountry.length == 0 ? "hidden" : ""} pt-12 grid grid-cols-3`}>
             <div className="w-4/5 col-span-2">
-              <h2 className="text-5xl pb-4">{currentCountry}</h2>
+              <h2 className="text-5xl pb-4">{currentCity}({currentCountry})</h2>
               <p className="pb-3 leading-tight">
                 India has a thriving digital nomad community, and there are
                 several cities that are popular among digital nomads for their
@@ -128,8 +130,7 @@ export default function Home() {
                 for digital nomads:
               </p>
               <p>
-                <span className="font-bold text-base">Currency: </span> INR
-                (Indian National Rupee)
+                <span className="font-bold text-base">Currency: </span> {cityData.currency}
               </p>
               <p>
                 <span className="font-bold text-base">
@@ -156,18 +157,16 @@ export default function Home() {
               <div className="grid grid-cols-9 items-center font-bold text-base mt-5 mb-5 box-content p-4 border-2 rounded-lg box-decoration-slice shadow-lg">
               <img className=" flex h-4 pl-2" src="/images/usersThree.svg"></img>
                 <p className=" col-span-8">
-                  No. of Nomadss: 
-                  <span className="font-semibold">
-                    1.2k
+                  No. of Nomads: <span className="font-semibold">
+                    {cityData.nomads}
                   </span>
                 </p>
               </div>
               <div className=" grid grid-cols-9 items-center font-bold text-base mt-5 mb-5 box-content p-4 border-2 rounded-lg box-decoration-slice shadow-lg">
               <img className=" flex h-4 pl-2" src="/images/money.svg"></img>
                 <p className=" col-span-8">
-                  Cost of Living 
-                  <span className="font-semibold">
-                  $6/day
+                  Cost of Living <span className="font-semibold">
+                   $ {cityData.cos} /  day
                   </span>
                 </p>
               </div>
