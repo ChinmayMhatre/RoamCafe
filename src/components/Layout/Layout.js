@@ -7,7 +7,8 @@ import styles from './Layout.module.scss';
 
 const Layout = ({ children, className, ...rest }) => {
   return (
-    <div className="mx-6  ">
+    <div className={styles.layout}>
+      <div className={styles.pattern}></div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
