@@ -143,47 +143,77 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-4">
-              <div className="font-bold text-base mb-5 box-content p-4 border-2 rounded-lg box-decoration-slice bg-white shadow-lg">
-                Time HH:MM{" "}
-                <span className="text-xs text-gray-400">(IST), UTC +5:30</span>
+              <div className="grid grid-cols-9 items-center font-bold text-base mb-5 box-content p-4 border-2 rounded-lg box-decoration-slice bg-white shadow-lg">
+                <img className=" flex h-4 pl-2" src="/images/clock.svg"></img>
+                <p className=" col-span-8">
+                  Time HH:MM{" "}
+                  <span className="text-xs text-gray-400 mt-1">
+                    {" "}
+                    (IST), UTC +5:30
+                  </span>
+                </p>
               </div>
-              <div className="font-bold text-base mt-5 mb-5 box-content p-4 border-2 rounded-lg box-decoration-slice shadow-lg">
-                No. of Nomads: <span className="font-semibold">1.2k</span>
+              <div className="grid grid-cols-9 items-center font-bold text-base mt-5 mb-5 box-content p-4 border-2 rounded-lg box-decoration-slice shadow-lg">
+              <img className=" flex h-4 pl-2" src="/images/usersThree.svg"></img>
+                <p className=" col-span-8">
+                  No. of Nomadss: 
+                  <span className="font-semibold">
+                    1.2k
+                  </span>
+                </p>
               </div>
-              <div className="font-bold text-base mt-5 mb-5 box-content p-4 border-2 rounded-lg box-decoration-slice shadow-lg">
-                Cost of Living: <span className="font-semibold">$6/day</span>
+              <div className=" grid grid-cols-9 items-center font-bold text-base mt-5 mb-5 box-content p-4 border-2 rounded-lg box-decoration-slice shadow-lg">
+              <img className=" flex h-4 pl-2" src="/images/money.svg"></img>
+                <p className=" col-span-8">
+                  Cost of Living 
+                  <span className="font-semibold">
+                  $6/day
+                  </span>
+                </p>
               </div>
             </div>
           </div>
           <div class={`${currentCountry.length == 0 ? "hidden" : ""} flex flex-col bg-white m-auto p-auto`}>
-            <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-gray-800">
+          <h1 class="flex py-5 lg:px-20 md:px-10 px-5 font-bold text-4xl text-gray-800">
               Example
             </h1>
             <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
-              <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10 ">
+              <div class="flex flex-nowrap ">
                 <div class="inline-block px-3">
-                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                    <img
+                      className="object-none min-h-full"
+                      src="/images/india/india1.png"
+                      alt="..."
+                    />
+                  </div>
                 </div>
                 <div class="inline-block px-3">
-                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                    <img
+                      className="object-none min-h-full"
+                      src="/images/india/india2.png"
+                      alt="..."
+                    />
+                  </div>
                 </div>
                 <div class="inline-block px-3">
-                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                    <img
+                      className="object-none min-h-full"
+                      src="/images/india/india3.png"
+                      alt="..."
+                    />
+                  </div>
                 </div>
                 <div class="inline-block px-3">
-                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
-                </div>
-                <div class="inline-block px-3">
-                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
-                </div>
-                <div class="inline-block px-3">
-                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
-                </div>
-                <div class="inline-block px-3">
-                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
-                </div>
-                <div class="inline-block px-3">
-                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+                  <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                    <img
+                      className="object-none min-h-full"
+                      src="/images/india/india4.png"
+                      alt="..."
+                    />
+                  </div>
                 </div>
               </div>
             </div>

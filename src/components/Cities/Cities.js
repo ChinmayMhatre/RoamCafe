@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Cities.module.scss";
 import { useState, useEffect } from "react";
+import NomadApps from "@components/NomadApps";
 
 const Cities = () => {
   const [data, setData] = useState([]);
@@ -38,6 +39,7 @@ const Cities = () => {
           Temperature: {data.main?.temp} Humidity: {data.main?.humidity}
         </span>
       </div>
+      <NomadApps/>
     </div>
   );
 };
