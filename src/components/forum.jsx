@@ -99,13 +99,13 @@ const Forum = ({currentCountry,currentCity}) => {
         checkUser();
     }, [user, loading]);
     return (
-        <div className="my-20 p-12 shadow-lg rounded-lg max-w-md mx-auto">
+        <div className="my-10 p-12 shadow-lg rounded-lg  mx-auto">
             <form onSubmit={submitPost}>
                 <h1 className="text-2xl font-bold">
-                    {post.hasOwnProperty("id") ? "Edit your post" : "Create a new post"}
+                    {post.hasOwnProperty("id") ? "Edit your post" : `Talk to fellow nomads in ${currentCity} `}
                 </h1>
                 <div className="py-2">
-                    <h3 className="text-lg font-medium py-2">Description</h3>
+                    <h3 className="text-lg font-medium py-2">Write a message</h3>
                     <textarea
                         value={post.description}
                         onChange={(e) => setPost({ ...post, description: e.target.value })}
@@ -122,7 +122,7 @@ const Forum = ({currentCountry,currentCity}) => {
                     type="submit"
                     className="w-full bg-cyan-600 text-white font-medium p-2 my-2 rounded-lg text-sm"
                 >
-                    Submit
+                    Comment
                 </button>
             </form>
 
@@ -130,11 +130,6 @@ const Forum = ({currentCountry,currentCity}) => {
         <h2>See what other people are saying</h2>
         {allPosts.map((post) => (
           <Message key={post.id} {...post}>
-            <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
-              `<button>
-                {post.comments?.length > 0 ? post.comments?.length : 0} comments
-              </button>
-            </Link>`
           </Message>
         ))}
       </div>

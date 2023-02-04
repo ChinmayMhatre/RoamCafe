@@ -64,11 +64,22 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Section>
-        <Container>
-          <h1 className={styles.title}>Next.js Leaflet Starter</h1>
+      <Section className="m-0 p-0">
+        <Container className=" relative m-0 p-0">
+          <h1 className="text-5xl font-medium">Project Title</h1>
+          <p className=" text-md pt-4 pb-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat rem accusantium modi sequi aliquam harum magni totam est nostrum nisi autem aperiam molestiae aut vero quam, quidem sint? Sapiente, nemo.</p>
+            <div className="absolute right-4 top-36 bg-white rounded-lg z-[10000] p-4 max-w-xs">
+              <h2 className="font-bold">Directions to use</h2>
+              <p className="text-sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione, doloremque!</p>
+            </div>
+          <div className=" border-white border-4 drop-shadow-xl">
           <Map
             className={styles.homeMap}
+            styles= {
+              {
+                borderRadius:2
+              }
+            }
             width="800"
             height="400"
             center={[0, 0]}
@@ -101,11 +112,12 @@ export default function Home() {
               </>
             )}
           </Map>
+          </div>
         </Container>
       </Section>
       <Section>
         <Container>
-          <div className={` ${currentCountry.length == 0 ? "hidden" : ""} grid grid-cols-3`}>
+          <div className={` ${currentCountry.length == 0 ? "hidden" : ""} pt-12 grid grid-cols-3`}>
             <div className="w-4/5 col-span-2">
               <h2 className="text-5xl pb-4">{currentCountry}</h2>
               <p className="pb-3 leading-tight">
