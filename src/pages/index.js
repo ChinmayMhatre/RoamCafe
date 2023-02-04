@@ -1,6 +1,7 @@
 import Head from "next/head";
 import useSWR from "swr";
 
+
 import Layout from "@components/Layout";
 import Section from "@components/Section";
 import Container from "@components/Container";
@@ -9,20 +10,49 @@ import Button from "@components/Button";
 import data from "./locs.json";
 import Cities from "@components/Cities";
 
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  updateDoc,
+  orderBy, 
+  query,
+  onSnapshot
+} from "firebase/firestore";
+import { auth, db } from "../utils/firebase";
+
 import styles from "@styles/Home.module.scss";
 import Forum from "@components/forum";
+import { useState } from "react";
 
 const DEFAULT_CENTER = [38.907132, -77.036546];
 
 // const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-export default function Home() {
-  // const { data, error, isLoading } = useSWR(
-  // "./test.json",
-  //   fetcher
-  // );
 
-  console.log(data);
+export default function Home() {
+  
+  const [currentCountry, setCurrentCountry] = useState("")
+  const [currentCity, setCurrentCity] = useState("")
+  const [cityData,setCityData] = useState({})
+  const updateData = async (city,region)=>{
+    setCurrentCity( city )
+    setCurrentCountry( region )
+    await getCity()
+  }
+
+  const getCity = async () => {
+    const collectionRef = collection(db, "city");
+    const q = query(collectionRef);
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const tempcities = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      const cities = tempcities.filter(el => el.country == currentCountry ) 
+      console.log(cities)
+      setCityData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+    return unsubscribe;
+};
 
   return (
     <Layout>
@@ -55,22 +85,19 @@ export default function Home() {
                     <Marker
                       key={id}
                       position={[location.lat, location.lng]}
-                      onClick={() => alert("Hello")}
                     >
                       <Popup>
-                        <button onClick={() => ""}>
+                        <div>
+
                           {city}, {region}
+                        </div>
+                        <button onClick={() => updateData(city,region) }>
+                          click to know more
                         </button>
                       </Popup>
                     </Marker>
                   );
                 })}
-
-                <Marker position={DEFAULT_CENTER}>
-                  <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                  </Popup>
-                </Marker>
               </>
             )}
           </Map>
@@ -78,9 +105,9 @@ export default function Home() {
       </Section>
       <Section>
         <Container>
-          <div className="grid grid-cols-3">
+          <div className={` ${currentCountry.length == 0 ? "hidden" : ""} grid grid-cols-3`}>
             <div className="w-4/5 col-span-2">
-              <h2 className="text-5xl pb-4">India</h2>
+              <h2 className="text-5xl pb-4">{currentCountry}</h2>
               <p className="pb-3 leading-tight">
                 India has a thriving digital nomad community, and there are
                 several cities that are popular among digital nomads for their
@@ -116,7 +143,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div class="flex flex-col bg-white m-auto p-auto">
+          <div class={`${currentCountry.length == 0 ? "hidden" : ""} flex flex-col bg-white m-auto p-auto`}>
             <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-gray-800">
               Example
             </h1>
@@ -149,8 +176,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <Cities />
-          <Forum/>
+          <div className={`${currentCountry.length == 0 ? "hidden" : "block"}`}>
+            <Cities />
+            <Forum currentCity= {currentCity} currentCountry = {currentCountry}/>
+          </div>
         </Container>
       </Section>
     </Layout>

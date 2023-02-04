@@ -18,21 +18,24 @@ import {
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 
-const Forum = () => {
+const Forum = ({currentCountry,currentCity}) => {
     const [allPosts, setAllPosts] = useState([]);
 
     const getPosts = async () => {
         const collectionRef = collection(db, "posts");
         const q = query(collectionRef, orderBy("timestamp", "desc"));
         const unsubscribe = onSnapshot(q, (snapshot) => {
-            setAllPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            const temp = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+            const filtered = temp.filter(el=>el.city == currentCity)
+            // setAllPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            setAllPosts(filtered);
         });
         return unsubscribe;
     };
 
     useEffect(() => {
         getPosts();
-    }, []);
+    }, [currentCity]);
     //Form state
     const [post, setPost] = useState({ description: "" });
     const [user, loading] = useAuthState(auth);
@@ -72,6 +75,7 @@ const Forum = () => {
                 user: user.uid,
                 avatar: user.photoURL,
                 username: user.displayName,
+                city:currentCity
             });
             setPost({ description: "" });
             toast.success("Post has been made 🚀", {
