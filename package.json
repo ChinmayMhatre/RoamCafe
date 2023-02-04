@@ -18,13 +18,17 @@
     "url": "https://github.com/colbyfayock/next-leaflet-starter/issues"
   },
   "dependencies": {
+    "appwrite": "^10.2.0",
     "copy-webpack-plugin": "^11.0.0",
+    "firebase": "^9.17.1",
     "leaflet": "^1.9.3",
     "next": "^13.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-firebase-hooks": "^5.1.1",
     "react-icons": "^4.7.1",
     "react-leaflet": "^4.2.0",
+    "react-toastify": "^9.1.1",
     "sass": "^1.57.0",
     "swr": "^2.0.3"
   },
