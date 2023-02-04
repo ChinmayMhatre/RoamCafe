@@ -10,6 +10,7 @@ import data from "./locs.json"
 import Cities from "@components/Cities"
 
 import styles from "@styles/Home.module.scss";
+import Forum from "@components/forum";
 
 
 
@@ -102,6 +103,7 @@ export default function Home() {
               </div>
           </div>
           <Cities />
+          <Forum/>
         </Container>
       </Section>
     </Layout>
