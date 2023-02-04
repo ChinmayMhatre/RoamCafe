@@ -7,6 +7,7 @@ import Container from "@components/Container";
 import Map from "@components/Map";
 import Button from "@components/Button";
 import data from "./locs.json"
+import Cities from "@components/Cities"
 
 import styles from "@styles/Home.module.scss";
 
@@ -74,10 +75,33 @@ export default function Home() {
               </>
             )}
           </Map>
-
-
-
-
+        </Container>
+      </Section>
+      <Section>
+        <Container>
+          <div className="grid-container">
+              <div className="grid-item">
+                <h2 className={styles.title}>India</h2>
+                <p className={styles.description}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                </p>
+                <p>
+                  <span>Currency: </span> INR (Indian National Rupee)
+                </p>
+                <p>
+                  <span>Most Spoken Language: </span> Hindi
+                </p>
+                <p>
+                  <span>Nomad Insurance: </span> Available
+                </p>
+              </div>
+              <div className="grid-item">
+                <div className="">v</div>
+                <div className="">x</div>
+                <div className="">x</div>
+              </div>
+          </div>
+          <Cities />
         </Container>
       </Section>
     </Layout>
