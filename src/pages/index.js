@@ -59,20 +59,20 @@ export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>Next.js Leaflet Starter</title>
+        <title>RoamCafe</title>
         <meta
           name="description"
-          content="Create mapping apps with Next.js Leaflet Starter"
+          content="A website for Digital Nomads"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Section className="m-0 p-0">
         <Container className=" relative m-0 p-0">
-          <h1 className="text-5xl font-medium">Project Title</h1>
-          <p className=" text-md pt-4 pb-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat rem accusantium modi sequi aliquam harum magni totam est nostrum nisi autem aperiam molestiae aut vero quam, quidem sint? Sapiente, nemo.</p>
+          <h1 className="text-5xl font-medium">Welcome to RoamCafe</h1>
+          <p className=" text-md pt-4 pb-6"> The Digital Nomad's Guide to the Endless Frontier: A Journey Through the Exciting World of Remote Work and Exploration.</p>
             <div className="absolute right-4 top-36 bg-white rounded-lg z-[10000] p-4 max-w-xs">
               <h2 className="font-bold">Directions to use</h2>
-              <p className="text-sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione, doloremque!</p>
+              <p className="text-sm">Click on pins to know more about the city </p>
             </div>
           <div className=" border-white border-4 drop-shadow-xl">
           <Map
@@ -173,9 +173,6 @@ export default function Home() {
             </div>
           </div>
           <div class={`${currentCountry.length == 0 ? "hidden" : ""} flex flex-col bg-white m-auto p-auto`}>
-          <h1 class="flex py-5 lg:px-20 md:px-10 px-5 font-bold text-4xl text-gray-800">
-              Example
-            </h1>
             <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
               <div class="flex flex-nowrap ">
                 <div class="inline-block px-3">

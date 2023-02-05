@@ -13,7 +13,7 @@ const Cities = () => {
 
   async function getWeather() {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=mumbai&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=mumbai&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`
     );
     const data = await response.json();
     setData(data);
@@ -22,12 +22,13 @@ const Cities = () => {
 
   return (
     <div>
-      <div className="">
-        <span>Wifi Speed: 13Mbps </span>
-        <span>AQI: 12.7 </span>
-        <span className="weather">
-          Temperature: {data.main?.temp} Humidity: {data.main?.humidity}
+      <div className=" flex items-center justify-evenly ">
+        <span className="block font-semibold text-center text-base box-content px-4 py-3 border-2 rounded-full box-decoration-slice bg-white">Wifi Speed: 13Mbps </span>
+        <span className="block font-semibold text-center text-base box-content px-4 py-3 border-2 rounded-full box-decoration-slice bg-white">AQI: 12.7 </span>
+        <span className="block font-semibold text-center text-base box-content px-4 py-3 border-2 rounded-full box-decoration-slice bg-white">
+          Temperature: {data.main?.temp}
         </span>
+        <span className="block font-semibold text-center text-base box-content px-4 py-3 border-2 rounded-full box-decoration-slice bg-white">Humidity: {data.main?.humidity}</span>
       </div>
       <NomadApps/>
       <NomadHotels/>

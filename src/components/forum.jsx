@@ -109,7 +109,7 @@ const Forum = ({currentCountry,currentCity}) => {
                     <textarea
                         value={post.description}
                         onChange={(e) => setPost({ ...post, description: e.target.value })}
-                        className="bg-gray-800 h-48 w-full text-white rounded-lg p-2 text-sm"
+                        className="bg-gray-200The Digital Nomad's Guide to the Endless Frontier: A Journey Through the Exciting World of Remote Work and Exploration. h-48 w-full text-white rounded-lg p-2 text-sm"
                     ></textarea>
                     <p
                         className={`text-cyan-600 font-medium text-sm ${post.description.length > 300 ? "text-red-600" : ""

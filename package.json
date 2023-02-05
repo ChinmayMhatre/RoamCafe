@@ -18,6 +18,7 @@
     "url": "https://github.com/colbyfayock/next-leaflet-starter/issues"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "appwrite": "^10.2.0",
     "copy-webpack-plugin": "^11.0.0",
     "firebase": "^9.17.1",

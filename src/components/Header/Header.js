@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { auth } from "../../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import { signOut } from "firebase/auth";
 const Header = () => {
   const [user, loading] = useAuthState(auth);
 
@@ -23,20 +23,20 @@ const Header = () => {
         )}
         {user && (
           <div className="flex items-center gap-8 border-[#dadada] border-[1px] bg-white drop-shadow-md py-4 px-12 rounded-xl">
-            <Link href="/post">
+            <Link href="/landing">
               <p>
                 Home
               </p>
             </Link>
-            <Link href="/post">
+            <Link href="/">
               <p>
                 Product
               </p>
             </Link>
-            <Link href="/post">
-              <p>
+            <Link href="/" >
+              <button onClick={()=>signOut(auth)}>
                 Logout
-              </p>
+              </button>
             </Link>
           </div>
         )}
